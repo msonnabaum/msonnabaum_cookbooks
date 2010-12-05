@@ -25,5 +25,6 @@ when "debian", "ubuntu"
 (ln -s /usr/share/drush/drush /usr/bin/drush)
 (pear install Console_Table)
     EOH
+    not_if { File.exists?("/usr/share/drush/drush") }
   end
 end
