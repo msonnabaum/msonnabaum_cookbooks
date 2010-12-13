@@ -3,7 +3,8 @@
     "mysql": "Includes the client recipe to configure a client",
     "mysql::client": "Installs packages required for mysql clients using run_action magic",
     "mysql::server_ec2": "Performs EC2-specific mountpoint manipulation",
-    "mysql::server": "Installs packages required for mysql servers w/o manual intervention"
+    "mysql::server": "Installs packages required for mysql servers w/o manual intervention",
+    "mysql::repl": "Performs EC2-specific mountpoint manipulation"
   },
   "attributes": {
     "mysql/server_root_password": {
@@ -19,6 +20,20 @@
       ],
       "description": "Randomly generated password for the mysqld root user",
       "display_name": "MySQL Server Root Password"
+    },
+    "mysql/server_id": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "last digit of ip",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "description": "server-id for replication",
+      "display_name": "MySQL server-id"
     },
     "mysql/tunable/max_heap_table_size": {
       "required": "optional",
@@ -86,6 +101,19 @@
 
       ],
       "display_name": "MySQL Tunable Wait Timeout"
+    },
+    "mysql/auto_increment_offset": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "0",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "MySQL auto_increment_offset"
     },
     "mysql/tunable/net_read_timeout": {
       "required": "optional",

@@ -33,6 +33,7 @@ end
 
 default[:mysql][:tunable][:back_log]             = "128"
 default[:mysql][:tunable][:key_buffer]           = "256M"
+default[:mysql][:tunable][:key_buffer_size]           = "256M"
 default[:mysql][:tunable][:max_allowed_packet]   = "16M"
 default[:mysql][:tunable][:max_connections]      = "800"
 default[:mysql][:tunable][:max_heap_table_size]  = "32M"
@@ -51,6 +52,14 @@ default[:mysql][:tunable][:query_cache_limit]    = "1M"
 default[:mysql][:tunable][:query_cache_size]     = "16M"
 
 default[:mysql][:tunable][:log_slow_queries]     = "/var/log/mysql/slow.log"
-default[:mysql][:tunable][:long_query_time]      = 2
+default[:mysql][:tunable][:long_query_time]      = 1
 
-default[:mysql][:tunable][:innodb_buffer_pool_size] = "256M"
+default[:mysql][:tunable][:innodb_buffer_pool_size] = ((memory[:total].to_f * 1024) * 0.54).floor()
+
+
+default[:mysql][:tunable][:key_buffer_size]      = "20M" 
+default[:mysql][:tunable][:join_buffer_size]     = "512k"
+default[:mysql][:tunable][:read_buffer_size]     = "512k"
+default[:mysql][:tunable][:read_rnd_buffer_size] = "512k"
+default[:mysql][:tunable][:sort_buffer_size]     = "512k"
+default[:mysql][:tunable][:innodb_flush_log_at_trx_commit]     = "1"

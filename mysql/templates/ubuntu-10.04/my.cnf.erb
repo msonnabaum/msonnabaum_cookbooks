@@ -74,6 +74,13 @@ net_read_timeout        = <%= node[:mysql][:tunable][:net_read_timeout] %>
 net_write_timeout       = <%= node[:mysql][:tunable][:net_write_timeout] %>
 back_log                = <%= node[:mysql][:tunable][:back_log] %>
 max_heap_table_size     = <%= node[:mysql][:tunable][:max_heap_table_size] %>
+table_cache             = <%= node[:mysql][:tunable][:table_cache] %>
+
+key_buffer_size         = <%= node[:mysql][:tunable][:key_buffer_size] %>
+join_buffer_size        = <%= node[:mysql][:tunable][:join_buffer_size] %>
+read_buffer_size        = <%= node[:mysql][:tunable][:read_buffer_size] %>
+read_rnd_buffer_size    = <%= node[:mysql][:tunable][:read_rnd_buffer_size] %>
+sort_buffer_size        = <%= node[:mysql][:tunable][:sort_buffer_size] %>
 
 #
 # * Query Cache Configuration
@@ -103,6 +110,17 @@ expire_logs_days        = 10
 max_binlog_size         = 100M
 #binlog_do_db           = include_database_name
 #binlog_ignore_db       = include_database_name
+
+# * From Acquia Hosting config
+log-bin                         = binlog
+report-host 			= <%= node[:fqdn] %>
+expire_logs_days                = 5
+relay-log                       = relaylog
+relay-log-index                 = relay-index
+auto_increment_increment        = 5
+replicate-wild-ignore-table     = mysql.ibbackup_binlog_marker
+
+
 #
 # * InnoDB
 #
@@ -111,6 +129,11 @@ max_binlog_size         = 100M
 # You might want to disable InnoDB to shrink the mysqld process by circa 100MB.
 #skip-innodb
 innodb_buffer_pool_size = <%= node[:mysql][:tunable][:innodb_buffer_pool_size] %>
+innodb_data_file_path=ibdata1:10M:autoextend
+innodb_flush_method=O_DIRECT
+innodb_flush_log_at_trx_commit = <%= node[:mysql][:tunable][:innodb_flush_log_at_trx_commit] %>
+innodb_file_per_table
+
 #
 # * Federated
 #
