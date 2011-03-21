@@ -1,7 +1,7 @@
 #
 # Author::  Joshua Timberman (<joshua@opscode.com>)
 # Cookbook Name:: php
-# Recipe:: module_pgsql
+# Recipe:: module_curl2
 #
 # Copyright 2009, Opscode, Inc.
 #
@@ -18,13 +18,11 @@
 # limitations under the License.
 #
 
-pack = value_for_platform(
-  [ "centos", "redhat", "fedora", "suse" ] => {
-    "default" => "php-pgsql"
-  },
-  "default" => "php5-pgsql"
-)
-
-package pack do
-  action :upgrade
+case node[:platform]
+  when "centos", "redhat", "fedora", "suse"
+    #centos php compiled with curl
+  when "debian" "ubuntu"
+    package "php5-curl" do
+      action :upgrade
+    end
 end

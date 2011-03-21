@@ -1,4 +1,14 @@
 {
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "long_description": "",
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "description": "Installs and maintains php and php modules",
+  "version": "0.9.1",
   "recipes": {
     "php::php4": "Install packages for PHP version 4",
     "php::module_sybase": "Install the php5-sybase package",
@@ -13,6 +23,7 @@
     "php::module_gd": "Install the php5-gd package",
     "php::module_apc": "Install the php5-apc package",
     "php::module_mcrypt": "Install the php5-mcrypt package",
+    "php::module_memcached": "Install the php5-memcached package",
     "php::module_memcache": "Install the php5-memcache package",
     "php::module_mysql": "Install the php5-mysql package",
     "php::module_fileinfo": "Install the php5-fileinfo package",
@@ -21,20 +32,15 @@
     "php::module_pgsql": "Install the php5-pgsql packag",
     "php::module_imagemagick": "Install the php5-imagemagick package"
   },
+  "maintainer": "Opscode, Inc.",
   "attributes": {
   },
-  "providing": {
+  "replacing": {
   },
   "dependencies": {
     "apache2": [
 
     ]
-  },
-  "maintainer": "Opscode, Inc.",
-  "replacing": {
-  },
-  "maintainer_email": "cookbooks@opscode.com",
-  "groupings": {
   },
   "platforms": {
     "debian": [
@@ -56,15 +62,10 @@
 
     ]
   },
-  "license": "Apache 2.0",
-  "version": "0.9.1",
-  "recommendations": {
-  },
-  "suggestions": {
-  },
+  "maintainer_email": "cookbooks@opscode.com",
   "name": "php",
-  "long_description": "",
-  "description": "Installs and maintains php and php modules",
-  "conflicting": {
+  "groupings": {
+  },
+  "recommendations": {
   }
 }

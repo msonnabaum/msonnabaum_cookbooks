@@ -1,7 +1,7 @@
 #
 # Author::  Joshua Timberman (<joshua@opscode.com>)
 # Cookbook Name:: php
-# Recipe:: module_pgsql
+# Recipe:: module_memcached
 #
 # Copyright 2009, Opscode, Inc.
 #
@@ -20,9 +20,9 @@
 
 pack = value_for_platform(
   [ "centos", "redhat", "fedora", "suse" ] => {
-    "default" => "php-pgsql"
+    "default" => "php-pecl-memcached"
   },
-  "default" => "php5-pgsql"
+  "default" => "php5-memcached"
 )
 
 package pack do

@@ -1,9 +1,9 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
+# Author::  Dustin Currie (<dustin@onlinedesert.com.com>)
 # Cookbook Name:: php
-# Recipe:: module_pgsql
+# Recipe:: module_gd
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2010, Dustin Currie
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@
 
 pack = value_for_platform(
   [ "centos", "redhat", "fedora", "suse" ] => {
-    "default" => "php-pgsql"
-  },
-  "default" => "php5-pgsql"
+    "default" => "php-xmlrpc"
+  }, 
+  "default" => "php5-xmlrpc"
 )
 
 package pack do

@@ -16,7 +16,12 @@
 # limitations under the License.
 #
 
-pack = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => "php-sybase"}, "default" => "php5-sybase")
+pack = value_for_platform(
+  [ "centos", "redhat", "fedora", "suse" ] => {
+    "default" => "php-sybase"
+  }, 
+  "default" => "php5-sybase"
+)
 
 package pack do
   action :upgrade

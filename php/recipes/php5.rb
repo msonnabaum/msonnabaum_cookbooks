@@ -21,7 +21,7 @@
 include_recipe "apache2"
 include_recipe "php::module_mysql"
 include_recipe "php::module_ldap"
-include_recipe "php::module_memcache"
+include_recipe "php::module_memcached"
 include_recipe "php::module_gd"
 include_recipe "php::module_pgsql"
 include_recipe "php::pear"
@@ -34,7 +34,12 @@ cookbook_file value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"d
   notifies :restart, resources("service[apache2]"), :delayed
 end
 
-packages = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => %w(php php-cli php-Smarty)}, "default" => %w{php5 php5-cli smarty})
+packages = value_for_platform(
+  [ "centos", "redhat", "fedora", "suse" ] => {
+    "default" => %w(php php-cli php-Smarty)
+  },
+  "default" => %w{php5 php5-cli smarty}
+)
 
 packages.each do |pkg|
   package pkg do

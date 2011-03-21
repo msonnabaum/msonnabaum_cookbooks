@@ -16,7 +16,12 @@
 # limitations under the License.
 #
 
-pack = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => "php-imagemagick"}, "default" => "php5-imagemagick")
+pack = value_for_platform(
+  [ "centos", "redhat", "fedora", "suse" ] => {
+    "default" => "php-imagick"
+  }, 
+  "default" => "php5-imagick"
+)
 
 package pack do
   action :upgrade

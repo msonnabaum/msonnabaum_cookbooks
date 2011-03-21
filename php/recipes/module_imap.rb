@@ -16,7 +16,12 @@
 # limitations under the License.
 #
 
-pack = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => "php-imap"}, "default" => "php5-imap")
+pack = value_for_platform(
+  [ "centos", "redhat", "fedora", "suse" ] => {
+    "default" => "php-imap"
+  }, 
+  "default" => "php5-imap"
+)
 
 package pack do
   action :upgrade

@@ -18,10 +18,22 @@
 # limitations under the License.
 #
 
-pack = value_for_platform([ "centos", "redhat", "fedora", "suse" ] => {"default" => "php-pecl-apc"}, "default" => "php-apc")
+pack = value_for_platform(
+  [ "centos", "redhat", "fedora", "suse" ] => {
+    "default" => "php-pecl-apc"
+  },
+  "default" => "php-apc"
+)
 
 if pack
   package pack do
     action :upgrade
   end
+end
+
+template "/etc/php5/conf.d/apc.ini" do
+  source "mod_apc.ini.erb"
+  owner "root"
+  group "root"
+  mode 0644
 end
