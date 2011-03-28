@@ -1,9 +1,9 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
+# Author:: Seth Chisamore <schisamo@opscode.com>
 # Cookbook Name:: php
-# Recipe:: default
+# Resource:: pear_package
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright:: 2011, Opscode, Inc <legal@opscode.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,13 +18,11 @@
 # limitations under the License.
 #
 
-include_recipe "php::#{node['php']['install_method']}"
+actions :install, :upgrade, :remove, :purge
 
-# update the main channels
-php_pear_channel 'pear.php.net' do
-  action :update
-end
-
-php_pear_channel 'pecl.php.net' do
-  action :update
-end
+attribute :package_name, :kind_of => String, :name_attribute => true
+attribute :version, :default => nil
+attribute :channel, :kind_of => String
+attribute :options, :kind_of => String
+attribute :directives, :kind_of => Hash, :default => {}
+attribute :preferred_state, :default => 'stable'
